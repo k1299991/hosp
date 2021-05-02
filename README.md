@@ -1,5 +1,6 @@
 # hospital
 
+test
 ## Project setup
 ```
 npm install
