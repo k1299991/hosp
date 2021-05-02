@@ -1,7 +1,7 @@
 import Vue from 'vue'
 // 导入mock文件得到接口，并发送请求测试接口
 import axios from 'axios'
-import './mock/mock.js'
+import './mock/mock'
 // 引入element
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -14,6 +14,12 @@ import '@/permission'
 
 // 导入全局的样式文件
 import './styles/index.less'
+
+//
+// Vue.http.headers.common['Access-Control-Allow-Origin'] = '*'
+// Vue.http.headers.common['Content-Type'] = 'application/x-www-form-urlencoded'
+// Vue.http.headers.common['Accept'] = 'application/json, text/plain, */*'
+// Vue.http.headers.common['Access-Control-Allow-Headers'] = 'Origin, Accept, Content-Type, Authorization, Access-Control-Allow-Origin'
 
 Vue.use(ElementUI) // 注册
 

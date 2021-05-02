@@ -5,13 +5,17 @@ import axios from 'axios'
 // import { Message } from 'element-ui'
 // import { getTimeStamp } from '@/utils/auth' // 导入获取时间戳的函数
 // const TimeOut = 3600 // 定义超时时间
+
+axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
 const service = axios.create({
+
   // 3.创建一个axios的实例
   // process.env 环境变量对象
-  baseURL: 'http://192.168.15.62:3001', // 使用env.development中设置的基准地址
-  timeout: 5000 // 设置超时时间
+  // baseURL: 'http://192.168.99.102:8089/', // 使用env.development中设置的基准地址
+  baseURL: '/', // 使用env.development中设置的基准地址
+  timeout: 99999 // 设置超时时间
 })
-
+// service.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
 // 5.请求拦截器 -- 设置token
 service.interceptors.request.use(
   config => {
@@ -19,6 +23,9 @@ service.interceptors.request.use(
     //   // 检查时间戳是否超时
     //   // 直接删除token
     // }
+    //   if(config.method==='post' || config.method==='POST') {
+    //       config.data=qs.stringify(config.data)
+    //   }
     return config // 必须返回配置参数
   },
   // 请求错误操作
