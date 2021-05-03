@@ -37,7 +37,8 @@ service.interceptors.request.use(
 // 4.响应拦截器
 service.interceptors.response.use(
   response => {
-    return response.data
+
+          return response.data
   },
   // 响应错误
   error => {

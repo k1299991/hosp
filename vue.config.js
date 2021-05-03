@@ -14,8 +14,12 @@ module.exports = {
     port: 8089,
     proxy: {
       '/': {
-        target: ' http://192.168.99.102:8088/',
-        changeOrigin: true
+        // target: ' http://127.0.0.1:9090/',
+        target: ' http://www.isst.top:9090/',
+        changeOrigin: true,
+        pathRewrite: {
+          ['^/' + process.env.VUE_APP_BASE_API]: ''
+        }
       }
     },
     overlay: {

@@ -53,12 +53,22 @@ export default {
       console.log('updateDgId')
     },
     async getShouyedept () {
-      this.deptList = await getShouyedept()
-      console.log(this.deptList)
+      await getShouyedept().then(res => {
+        if (res.state != 200) {
+          this.$message.error(res.message);
+          return;
+        }
+        this.deptList=res.data;
+      });
     },
     async getDgInfo () {
-      this.doctorGarde = await getDgInfo()
-      console.log(this.doctorGarde)
+      await getDgInfo().then(res => {
+        if( res.state != 200){
+          this.$message.error(res.message);
+          return ;
+        }
+        this.doctorGarde=res.data;
+      });
     }
   }
 }

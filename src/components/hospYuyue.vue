@@ -326,8 +326,13 @@ export default {
     },
     // 获取医生职称
     async getDgInfo () {
-      this.doctorGarde = await getDgInfo()
-      console.log(this.doctorGarde)
+      await getDgInfo().then(res => {
+        if( res.state != 200){
+          this.$message.error(res.message);
+          return ;
+        }
+        this.doctorGarde=res.data;
+      });
     }
   }
 }

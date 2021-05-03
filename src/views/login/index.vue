@@ -80,8 +80,16 @@ export default {
       try {
         await this.$refs.formData.validate()
         // 验证通过 发送请求
-        await this.login(this.formData)
-        this.$router.push('/')
+        await this.login(this.formData).then(res => {
+          if( res.state != 200){
+            this.$message.error(res.message);
+            return ;
+          }
+          this.$router.push('/')
+        });
+
+
+
       } catch (err) {
         console.log(err)
       }

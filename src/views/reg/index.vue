@@ -213,11 +213,9 @@ export default {
         // console.log(data)
         // const res = await this.$http.post('/addgoods', obj)
         // console.log(res)
-        const have = await userNameCheck(this.formData.userAccount)
-        console.log(have)
-        if (have.length === 0) {
+        // const have = await userNameCheck(this.formData.userAccount)
           const uid = Math.floor(Math.random() * 10000)
-          const res = await userReg({
+         await userReg({
             userAccount: this.formData.userAccount,
             password: this.formData.password,
             userName: this.formData.userName,
@@ -229,30 +227,31 @@ export default {
             id: uid,
             userId: uid,
             code: `a123${this.formData.userName}456a`
-          })
-          console.log(res)
-          // 提示注册成功
-          this.$message.success('注册成功')
-          // 清空表单
-          this.formData = {
-            user: '',
-            pwd: '',
-            repwd: '',
-            name: '',
-            age: '',
-            gender: '',
-            phone: '',
-            email: '',
-            createTime: '',
-            updateTime: ''
-          }
-          // this.$refs.formData.resetFields()
-          // 跳转到登录页
-          this.$router.push('/login')
-        } else {
-          this.$message.error('账户名已存在，请换一个账户名')
-          Promise.reject(new Error('账户名已存在'))
-        }
+          }).then(res => {
+            if( res.state != 200){
+              this.$message.error(res.message);
+              return ;
+            }
+            // 提示注册成功
+            this.$message.success(res.message)
+            // 清空表单
+            this.formData = {
+              user: '',
+              pwd: '',
+              repwd: '',
+              name: '',
+              age: '',
+              gender: '',
+              phone: '',
+              email: '',
+              createTime: '',
+              updateTime: ''
+            }
+            // this.$refs.formData.resetFields()
+            // 跳转到登录页
+            this.$router.push('/login')
+          });
+
       } catch (error) {
         console.log(error)
       }
