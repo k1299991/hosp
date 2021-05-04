@@ -63,51 +63,6 @@
             <!-- 右边 -->
             <el-col :span="7">
                 <side-nav/>
-                <!-- 上 -->
-                <!-- <el-row> -->
-                <!-- 已开通医院数量 -->
-                <!-- <el-card class="box-card" shadow="nerve">
-                    <div slot="header" class="clearfix">
-                      <div>挂号规则</div>
-                    </div>
-                    <div style="margin:12px 0">
-                      1.每日8:00左右更新后一天号源
-                    </div>
-                    <div>
-                      2.可预约当天和未来2周号源
-                    </div>
-                    <div>
-                      3.请参考短信提示，到医院就诊
-                    </div>
-                    <div>
-                      4.就诊前一天16:00前，到“我的医者天下”--“我的预约”，可取消预约
-                    </div>
-                    <div>
-                      5.如需帮助，可拨打客服4000-xxx-xxx(10:00-18:00)
-                    </div>
-                  </el-card> -->
-                <!-- </el-row> -->
-                <!-- 下 -->
-                <!-- <el-row style="margin-top:20px"> -->
-                <!-- 合作机构 -->
-                <!-- <el-card class="box-card" shadow="nerve">
-                    <div slot="header" class="clearfix">
-                      <span>帮助中心</span>
-                    </div>
-                    <div style="margin-top:12px">
-                      1.医者天下是什么？
-                    </div>
-                    <div>
-                      2.如何选择医生？
-                    </div>
-                    <div>
-                      3.如何预约医生？
-                    </div>
-                    <div>
-                      4.如何评价医生？
-                    </div>
-                  </el-card> -->
-                <!-- </el-row> -->
             </el-col>
         </el-row>
     </div>
@@ -154,13 +109,18 @@
             },
             // 获取医院等级
             async gethospGarde() {
+              console.log(123456)
                 await gethospGarde().then(res => {
                     if (res.state != 200) {
                         this.$message.error(res.message);
                         return;
                     }
+                    console.log(res.data)
                     this.hospTab = res.data;
-                });
+                }).catch(err => {
+                  console.log('获取医院等级出错了')
+                  console.log(err)
+                })
 
             },
             //  获取医院数据

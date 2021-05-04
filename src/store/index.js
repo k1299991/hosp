@@ -12,7 +12,8 @@ import {
     setUserInfo,
     removeUserInfo
 } from '@/utils/auth'
-import {userlogin} from '@/api/user'
+
+import {login} from '@/api/user'
 
 Vue.use(Vuex)
 export default new Vuex.Store({
@@ -55,20 +56,21 @@ export default new Vuex.Store({
     actions: {
         // 封装登录方法
         async login(context, data) {
-            // 调用登录接口
-            const result = await userlogin(data)
-            // console.log(result)
+             try {
+                // 调用登录接口
+            console.log(data)
+            const res = await login(data)
+            console.log(res)
             // result 是 拿到账号名和密码一致的那条用户数据
             // 存入vuex中
-
-            try {
-                context.commit('setUserLoginInfo', result[0])
-                context.commit('setToken', result[0].code)
+                context.commit('setUserLoginInfo', res.data)
+                context.commit('setToken', res.data.code)
                 setTimeStamp() // 将此时登录的时间戳存起来 写入缓存
             } catch (err) {
                 //处理错误
+                console.log(err)
             }
-            return result;
+            // return res.data;
         }
         // 登出
         // logout (context) {

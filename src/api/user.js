@@ -5,7 +5,7 @@ import request from '@/utils/request'
 // 登录时调用的接口
 export function userlogin (data) {
   return request({
-    url: `/userReg/?userAccount=${data.username}&password=${data.password}`,
+    url: `/userReg/?userAccount=${data.Account}&password=${data.password}`,
     method: 'get'
   })
 }
@@ -21,6 +21,14 @@ export function userReg (data) {
   return request({
     url: '/userReg',
     method: 'post',
+    data
+  })
+}
+
+export function login (data) {
+  return request({
+    url: '/userReg',
+    method: 'get',
     data
   })
 }

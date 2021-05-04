@@ -100,7 +100,7 @@
 <script>
 import {
   getDepAndDgDoctor,
-  getDgDoctor,
+  getDoct,
   getDeptDoctor,
   getAllDoctor,
   getDepAndDgHoDoctor,
@@ -234,7 +234,8 @@ export default {
           // 有点击职称
           console.log(100010)
           console.log(this.$store.state.dgId)
-          this.findAllDoctor = await getDgDoctor(this.$store.state.dgId)
+          const {data} = await getDoct({dgId:this.$store.state.dgId})
+          this.findAllDoctor = data
           console.log(this.findAllDoctor)
           console.log('dgId发请求了')
         }

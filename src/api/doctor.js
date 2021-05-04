@@ -2,6 +2,16 @@
  * 获取医生数据
  */
 import request from '@/utils/request'
+
+export function getDoct (params) {
+  return request({
+    url: `/doctorMain`,
+    method: 'get',
+    params
+  })
+}
+
+
 // 1.根据医院id 获取医生数据
 export function getDoctByHospId (id) {
   return request({

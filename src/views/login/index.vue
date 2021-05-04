@@ -12,12 +12,12 @@
         auto-complete="on"
         label-position="left"
       >
-        <el-form-item prop="username">
+        <el-form-item prop="userAccount">
           <el-input
-            v-model="formData.username"
+            v-model="formData.userAccount"
             prefix-icon="el-icon-user-solid"
             placeholder="请输入账号"
-            name="username"
+            name="userAccounte"
             type="text"
             tabindex="1"
             auto-complete="on"
@@ -49,17 +49,18 @@
 
 <script>
 // import { userlogin } from '@/api/user'
+import {login} from '@/api/user'
 import { mapActions } from 'vuex' // 引入vuex的辅助函数mapActions
 export default {
   name: 'login',
   data () {
     return {
       formData: {
-        username: '',
+        userAccount: '',
         password: ''
       },
       rules: {
-        username: [
+        userAccount: [
           { required: true, message: '账户名不能为空', trigger: 'blur' },
           { min: 2, max: 12, message: '账户名为2-12位', trigger: 'blur' }
         ],
@@ -76,20 +77,20 @@ export default {
     ...mapActions(['login']),
     // 登录
     async handleLogin () {
-      // 校验表单
       try {
         await this.$refs.formData.validate()
-        // 验证通过 发送请求
-        await this.login(this.formData).then(res => {
-          if( res.state != 200){
-            this.$message.error(res.message);
-            return ;
-          }
+        await this.login(this.formData)
+        // .then(res => {
+        //   if( res.state != 200){
+        //     this.$message.error(res.message);
+        //     return ;
+        //   }
+        //   console.log(res.data)
+          this.$message.success('登录成功')
           this.$router.push('/')
-        });
-
-
-
+        // }).catch(res => {
+          // console.log(res)
+        // })
       } catch (err) {
         console.log(err)
       }

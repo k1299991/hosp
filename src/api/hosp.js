@@ -11,9 +11,15 @@ export function getHospInfo () {
   })
 }
 // 获取 医院等级
+// export function gethospGarde () {
+//   return request({
+//     url: '//isst/hosp-grade/list',
+//     method: 'get'
+//   })
+// }
 export function gethospGarde () {
   return request({
-    url: '//isst/hosp-grade/list',
+    url: '/hospitalTab',
     method: 'get'
   })
 }

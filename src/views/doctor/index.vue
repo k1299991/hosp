@@ -111,6 +111,7 @@ export default {
   methods: {
     // 点击科室
     getDeptId (id) {
+      console.log(id) // 科室的id
       this.dtShow = id // 选择某一个科室
       // if(this.$route.params.id){
       // }
@@ -121,6 +122,7 @@ export default {
         this.fd = 0
         if (this.fg) {
           // 没选科室 选择职称
+          // console.log(this.fg)
           this.$refs.find.getdoctorByDgId()
         } else {
           // 没选科室 也没选 职称
@@ -174,7 +176,8 @@ export default {
     },
     // 获取科室列表
     async getShouyedept () {
-      this.deptList = await getShouyedept()
+      const {data} = await getShouyedept()
+      this.deptList = data
       console.log(this.deptList)
     },
     // 获取医生职称

@@ -232,6 +232,7 @@ export default {
               this.$message.error(res.message);
               return ;
             }
+            console.log(res.data)
             // 提示注册成功
             this.$message.success(res.message)
             // 清空表单
