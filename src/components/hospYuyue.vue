@@ -297,8 +297,9 @@ export default {
     },
     // 根据路由参数 获取医院数据
     async getHosp () {
-      this.oHosp = (await getHosp(this.hospId))[0]
+      console.log(435342532432)
       console.log(this.hospId)
+      this.oHosp = (await getHosp(this.hospId))[0]
       console.log(this.oHosp)
     },
     // 根据路由参数 获取该医院的所有医生数据
@@ -327,11 +328,11 @@ export default {
     // 获取医生职称
     async getDgInfo () {
       await getDgInfo().then(res => {
-        if( res.state != 200){
-          this.$message.error(res.message);
-          return ;
-        }
-        this.doctorGarde=res.data;
+        // if( res.state != 200){
+        //   this.$message.error(res.message);
+        //   return ;
+        // }
+        this.doctorGarde=res;
       });
     }
   }

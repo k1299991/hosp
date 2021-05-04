@@ -63,8 +63,8 @@ export default new Vuex.Store({
             console.log(res)
             // result 是 拿到账号名和密码一致的那条用户数据
             // 存入vuex中
-                context.commit('setUserLoginInfo', res.data)
-                context.commit('setToken', res.data.code)
+                context.commit('setUserLoginInfo', res)
+                context.commit('setToken', res.code)
                 setTimeStamp() // 将此时登录的时间戳存起来 写入缓存
             } catch (err) {
                 //处理错误

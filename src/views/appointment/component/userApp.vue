@@ -62,68 +62,6 @@ export default {
   },
   data () {
     return {
-      tableData: [
-        {
-          date: '2019-11-13',
-          hospital: '常德市第一人民医院',
-          department: '儿科',
-          doctor: '张三',
-          sort: '01432324',
-          patient: '小明',
-          idCard: '431103201004141234',
-          state: '已完成'
-        },
-        {
-          date: '2020-03-01',
-          hospital: '常德市第一中医院',
-          department: '内科',
-          doctor: '李四',
-          sort: '01432324',
-          patient: '小红',
-          idCard: '431103201004141235',
-          state: '已完成'
-        },
-        {
-          date: '2021-04-13',
-          hospital: '常德市第一中医院',
-          department: '儿科',
-          doctor: '张三',
-          sort: '01432324',
-          patient: '小明',
-          idCard: '431103201004141234',
-          state: '已完成'
-        },
-        {
-          date: '2021-04-13',
-          hospital: '常德市第一中医院',
-          department: '儿科',
-          doctor: '张三',
-          sort: '01432324',
-          patient: '小明',
-          idCard: '431103201004141234',
-          state: '已完成'
-        },
-        {
-          date: '2021-04-13',
-          hospital: '常德市第一中医院',
-          department: '儿科',
-          doctor: '张三',
-          sort: '01432324',
-          patient: '小明',
-          idCard: '431103201004141234',
-          state: '已完成'
-        },
-        {
-          date: '2021-04-13',
-          hospital: '常德市第一中医院',
-          department: '儿科',
-          doctor: '张三',
-          sort: '01432324',
-          patient: '小明',
-          idCard: '431103201004141234',
-          state: '已完成'
-        }
-      ]
     }
   },
   created () {},
@@ -131,15 +69,17 @@ export default {
   methods: {
     async handle (row) {
       console.log(row)
-      // 点击取消
-      // 判断取消时的时间离用户预约的时间是否大于12小时
-      // 大于 允许取消 发请求 删除预约表中的这条数据
+     try{
+        // 点击取消
       await deleteAppointment(row.apID)
-      await getappoinInfo(
+      this.myAppoinInfo =await getappoinInfo(
         this.$store.state.userLoginInfo.userId
       )
       console.log('您已成功取消')
       // 否则不允许取消
+     }catch(err){
+      console.log(err)
+    }
     }
   }
 }

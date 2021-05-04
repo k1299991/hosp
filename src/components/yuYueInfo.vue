@@ -283,26 +283,33 @@ export default {
     },
     // 提交 预约表单
     async btnOK () {
-      // 1.表单校验
+     try{
+        // 1.表单校验
       await this.$refs.formData.validate()
+      // const time ='2021/'+ this.getYuYueInfo.date +' '+this.getYuYueInfo.time
+      // const time={
+      //   year:'2021/',
+      //   date:this.getYuYueInfo.date,
+      //   time:this.getYuYueInfo.time
+      // }
       //   2.发请求 需要后端返回一个预约号码
       const res = await setappointInfo({
-        apID: '708934', // 预约号码
+        // apID: '708934', // 预约号码
         userId: this.$store.state.userLoginInfo.userId,
         docId: this.getYuYueInfo.doctId,
         apName: this.formData.username,
         idCard: this.formData.idCard,
         apMobile: this.formData.mobile,
         aptime: this.handleTime(),
-        visitTime: `2021/${this.getYuYueInfo.date}  ${this.getYuYueInfo.time}`,
+        visitTime: '2021/5/3 下午',
         state: 1,
-        id: '708935'
+        // id: '708935'
       })
       console.log(res)
       //   3.提示预约成功信息S
       //   this.$message.success('预约单提交成功,您的预约号为：12312099887')
       this.$alert(
-        '您的预约号为：708934,请前往"个人中心"查看预约详情',
+        '您已预约成功,请前往"个人中心"查看预约详情',
         '预约单提交成功',
         {
           confirmButtonText: '确定'
@@ -315,6 +322,9 @@ export default {
         mobile: '',
         checked: false
       }
+     }catch(err){
+       console.log(err)
+     }
     },
     // 用户协议
     info () {

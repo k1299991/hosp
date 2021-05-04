@@ -26,17 +26,19 @@ export function userReg (data) {
 }
 
 export function login (data) {
+  console.log(data)
   return request({
-    url: '/userReg',
-    method: 'get',
+    url: '/userLogin',
+    method: 'post',
     data
   })
 }
 
 // 用户修改密码 修改个人信息
 export function userUpdate (data) {
+  console.log(data)
   return request({
-    url: `/userReg/${data.userId}`,
+    url: `/userReg`,
     method: 'put',
     data
   })

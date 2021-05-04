@@ -77,19 +77,22 @@ export default {
     ...mapActions(['login']),
     // 登录
     async handleLogin () {
+      // 校验表单
       try {
         await this.$refs.formData.validate()
-        await this.login(this.formData)
+        // 验证通过 发送请求
+        console.log(this.formData)
+        await this.login({userAccount:this.formData.userAccount,password:this.formData.password})
         // .then(res => {
-        //   if( res.state != 200){
-        //     this.$message.error(res.message);
-        //     return ;
-        //   }
-        //   console.log(res.data)
+          // if( res.state != 200){
+          //   this.$message.error(res.message);
+          //   return ;
+          // }
+          // console.log()
           this.$message.success('登录成功')
           this.$router.push('/')
         // }).catch(res => {
-          // console.log(res)
+        //   console.log(res)
         // })
       } catch (err) {
         console.log(err)

@@ -6,7 +6,7 @@ import request from '@/utils/request'
 export function getHospInfo () {
   return request({
     // 找“医院”数据
-    url: '/2hospitalMain',
+    url: '/hospitalMain',
     method: 'get'
   })
 }
@@ -27,7 +27,7 @@ export function gethospGarde () {
 // 根据医院等级获取医院数据
 export function getHospById (id) {
   return request({
-    url: `/2hospitalMain?hgId=${id}`,
+    url: `/hospitalMain?hgId=${id}`,
     method: 'get'
   })
 }
@@ -35,14 +35,14 @@ export function getHospById (id) {
 // 根据医院id 获取数据
 export function getHosp (id) {
   return request({
-    url: `/2hospitalMain?hospId=${id}`,
+    url: `/hospitalMain?hospId=${id}`,
     method: 'get'
   })
 }
 // 12、根据医院名字查询医院数据
 export function gethospByName (hospName) {
   return request({
-    url: `/2hospitalMain?hospName_like=${hospName}`,
+    url: `/hospitalMain?hospName_like=${hospName}`,
     method: 'get'
   })
 }

@@ -176,18 +176,18 @@ export default {
     },
     // 获取科室列表
     async getShouyedept () {
-      const {data} = await getShouyedept()
+      const data = await getShouyedept()
       this.deptList = data
       console.log(this.deptList)
     },
     // 获取医生职称
     async getDgInfo () {
        await getDgInfo().then(res => {
-        if( res.state != 200){
-          this.$message.error(res.message);
-          return ;
-        }
-         this.doctorGarde=res.data;
+        // if( res.state != 200){
+        //   this.$message.error(res.message);
+        //   return ;
+        // }
+         this.doctorGarde=res;
       });
 
     }

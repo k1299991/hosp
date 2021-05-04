@@ -120,30 +120,34 @@ export default {
   },
   data () {
     return {
-      hospInfoById: '', // 存放根据医院等级 获取的医院数据
+      hospInfoById: [], // 存放根据医院等级 获取的医院数据
       checked: false,
       url:
         'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3757760468,3188680945&fm=26&gp=0.jpg'
     }
   },
   created () {
+    console.log(1231231232)
     this.getHospById()
   },
   mounted () {},
   methods: {
     // 根据医院等级 hgId获取医院数据
     async getHospById () {
+      console.log('qewqeqwqwreqr')
       if (this.all) {
+        console.log(this.all)
         //  获取所有医院的 数据
-        const {data} = await getHospInfo()
+        const data = await getHospInfo()
         console.log(data)
         this.hospInfoById = data
       } else {
         //  根据传过来的医院等级id 获取对应的医院数据
         console.log(this.hgId)
-        const {data} = await getHospById(this.hgId)
+        const data = await getHospById(this.hgId)
         console.log(data)
         this.hospInfoById = data
+        console.log(this.hospInfoById)
       }
     },
     // 根据医院id 去医生表中查找该医院的所有医生

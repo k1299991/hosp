@@ -213,12 +213,14 @@
         methods: {
             // 获取医院信息
             async getShouyeHosp() {
-                await getShouyeHosp().then(res => {
-                    if (res.state != 200) {
-                        this.$message.error(res.message);
-                        return;
-                    }
-                    this.hospList = res.data;
+                try{
+                const res = await getShouyeHosp()
+                // .then(res => {
+                    // if (res.state != 200) {
+                    //     this.$message.error(res.message);
+                    //     return;
+                    // }
+                    this.hospList = res;
                     // 拿到获取到的前三个医院信息
                     // this.hospList2 = this.hospList.slice(0, 2)
                     // console.log(this.hospList)
@@ -228,28 +230,38 @@
                     this.times = this.hospList.map(item => item.htimes)
                     console.log(this.times)
 
-                });
+                // });
+                }catch(err){
+                    console.log(err)
+                }
 
             },
             // 获取科室信息
             async getShouyedept() {
-                await getShouyedept().then(res => {
-                    if( res.state != 200){
-                        this.$message.error(res.message);
-                        return ;
-                    }
-                    this.deptList=res.data;
-                });
+                try{
+                const res = await getShouyedept()
+                // .then(res => {
+                    // if( res.state != 200){
+                    //     this.$message.error(res.message);
+                    //     return ;
+                    // }
+                    this.deptList=res;
+                // });
+                }catch(err){
+                    console.log(err)
+                }
 
             },
             // 获取医生信息
             async getShouyeDoc() {
-              await getShouyeDoc().then(res => {
-                    if (res.state != 200) {
-                        this.$message.error(res.message);
-                        return;
-                    }
-                    this.docList=res.data;
+              try{
+              const res = await getShouyeDoc()
+            //   .then(res => {
+            //         if (res.state != 200) {
+            //             this.$message.error(res.message);
+            //             return;
+            //         }
+                    this.docList=res;
                     // 指定首页四名医生的数据
                     this.itemDoctor1 = [
                         this.docList[4],
@@ -270,7 +282,10 @@
                         this.docList[21]
                     ]
 
-                });
+                // });
+                }catch(err){
+                    console.log(err)
+                }
 
             }
         }

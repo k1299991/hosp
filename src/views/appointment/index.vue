@@ -200,7 +200,7 @@ export default {
     },
     // 根据登录者的账户id 获取用户的预约信息
     async getappoinInfo () {
-      console.log(this.$store.state.userLoginInfo.userId) // 1
+      console.log(this.$store.state.userLoginInfo.userId) 
       this.myAppion = await getappoinInfo(
         this.$store.state.userLoginInfo.userId
       )
@@ -235,14 +235,14 @@ export default {
         const dataPwd = {
           userId: this.$store.state.userLoginInfo.userId,
           password: this.userInfo1.password,
-          userAge: this.$store.state.userLoginInfo.userAge,
-          userMobile: this.$store.state.userLoginInfo.userMobile,
-          email: this.$store.state.userLoginInfo.email,
-          userIdCard: this.$store.state.userLoginInfo.userIdCard,
-          userAccount: this.$store.state.userLoginInfo.userAccount,
-          userName: this.$store.state.userLoginInfo.userName,
-          code: this.$store.state.token,
-          userGender: this.$store.state.userLoginInfo.userGender
+          // userAge: this.$store.state.userLoginInfo.userAge,
+          // userMobile: this.$store.state.userLoginInfo.userMobile,
+          // email: this.$store.state.userLoginInfo.email,
+          // userIdCard: this.$store.state.userLoginInfo.userIdCard,
+          // userAccount: this.$store.state.userLoginInfo.userAccount,
+          // userName: this.$store.state.userLoginInfo.userName,
+          // code: this.$store.state.token,
+          // userGender: this.$store.state.userLoginInfo.userGender
         }
         await userUpdate(dataPwd)
         this.$message.success('修改密码成功')
@@ -278,12 +278,12 @@ export default {
           userAge: this.userInfo.age,
           userMobile: this.userInfo.mobile,
           email: this.userInfo.email,
-          userIdCard: this.userInfo.idCard || '',
-          userAccount: this.$store.state.userLoginInfo.userAccount,
-          userName: this.$store.state.userLoginInfo.userName,
-          code: this.$store.state.token,
-          userGender: this.$store.state.userLoginInfo.userGender,
-          password: this.$store.state.userLoginInfo.password
+          userIdCard: this.userInfo.idCard || ''
+          // userAccount: this.$store.state.userLoginInfo.userAccount,
+          // userName: this.$store.state.userLoginInfo.userName,
+          // code: this.$store.state.token,
+          // userGender: this.$store.state.userLoginInfo.userGender,
+          // password: this.$store.state.userLoginInfo.password
         }
         await userUpdate(data)
         this.$store.commit('setUserLoginInfo', data)

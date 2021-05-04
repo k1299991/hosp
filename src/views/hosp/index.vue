@@ -111,12 +111,12 @@
             async gethospGarde() {
               console.log(123456)
                 await gethospGarde().then(res => {
-                    if (res.state != 200) {
-                        this.$message.error(res.message);
-                        return;
-                    }
-                    console.log(res.data)
-                    this.hospTab = res.data;
+                    // if (res.state != 200) {
+                    //     this.$message.error(res.message);
+                    //     return;
+                    // }
+                    console.log(res)
+                    this.hospTab = res;
                 }).catch(err => {
                   console.log('获取医院等级出错了')
                   console.log(err)

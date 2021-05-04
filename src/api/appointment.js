@@ -2,12 +2,7 @@
  * 封装获取预约信息
  */
 import request from '@/utils/request'
-export function getappoinInfo (id) {
-  return request({
-    url: `/appointment?userId=${id}`,
-    method: 'get'
-  })
-}
+
 
 // 提交预约信息
 export function setappointInfo (data) {
@@ -17,8 +12,14 @@ export function setappointInfo (data) {
     data
   })
 }
-
-// 删除预约信息
+// 获取预约信息
+export function getappoinInfo (id) {
+  return request({
+    url: `/appointment?userId=${id}`,
+    method: 'get'
+  })
+}
+// 取消预约
 export function deleteAppointment (apId) {
   return request({
     url: `/appointment/${apId}`,
